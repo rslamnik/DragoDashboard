@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "19a2be65-4834-48f4-9b82-edd331a80e55": {
+      "ProjectGuid": "19a2be65-4834-48f4-9b82-edd331a80e55",
+      "DisplayName": "DashboardApi",
+      "ColorIndex": 0
+    },
+    "bd32549d-d756-47fc-8dd6-0656ff51e4e2": {
+      "ProjectGuid": "bd32549d-d756-47fc-8dd6-0656ff51e4e2",
+      "DisplayName": "Services",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

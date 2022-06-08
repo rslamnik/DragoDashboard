@@ -1,0 +1,14 @@
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\bin\Debug\net6.0\Services.deps.json
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\bin\Debug\net6.0\Services.runtimeconfig.json
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\bin\Debug\net6.0\Services.dll
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\bin\Debug\net6.0\ref\Services.dll
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\bin\Debug\net6.0\Services.pdb
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.AssemblyInfoInputs.cache
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.AssemblyInfo.cs
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.csproj.CoreCompileInputs.cache
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.dll
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\ref\Services.dll
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.pdb
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.genruntimeconfig.cache
+C:\Users\rslam\Desktop\Projects\Dashboard\api\DashboardApi\Services\obj\Debug\net6.0\Services.csproj.AssemblyReference.cache
