@@ -32,5 +32,6 @@ namespace Services.Interfaces
         Task<int> DeleteKeyword(int keywordId, CancellationToken cancellationToken = default);
         Task<int> UpdateKeyword(KeywordV2 keyword, CancellationToken cancellationToken = default);
         Task<int> DeleteKeywordCategory(int keywordCategoryId, CancellationToken cancellationToken = default);
+        Task<int> AddBulkKeywords(List<KeywordV2> keywords, CancellationToken cancellationToken = default);
     }
 }

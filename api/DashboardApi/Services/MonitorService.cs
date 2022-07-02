@@ -237,7 +237,7 @@ namespace Services
                                             Nation = p.Nation,
                                             KeywordCategoryId = p.KeyWordCategoryId,
                                             Browser = p.Browser
-                                        }).ToList());
+                                        }).OrderBy(c => c.ChannelName).ToList());
             }
         }
 
@@ -412,6 +412,15 @@ namespace Services
 
                 //return Task.FromResult(db.SaveChanges());
                 return await db.SaveChangesAsync();
+            }
+        }
+
+        public Task<int> AddBulkKeywords(List<KeywordV2> keywords, CancellationToken cancellationToken = default)
+        {
+            using (var db = new seContext())
+            {
+                db.KeywordV2s.AddRange(keywords);
+                return Task.FromResult(db.SaveChanges());
             }
         }
     }

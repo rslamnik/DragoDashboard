@@ -8,6 +8,8 @@ import { usePagination } from "lib/hooks";
 import { useAppRoutes, generateLink } from "AppRoutes";
 import { useKeywords } from "./useKeywords";
 import { useDeleteKeyword } from "./useDeleteKeyword";
+import API from "lib/utils";
+import { useNotifications, ALERT_VARIANTS } from "lib/components/Notifications";
 
 const columns = [
     {
@@ -68,14 +70,38 @@ const Keywords = () => {
     let { categoryId: id } = useParams();
     const { routes } = useAppRoutes();
     const navigate = useNavigate();
+    const { showNotification } = useNotifications();
 
     const [deletingKeywordId, setDeletingKeywordId] = useState(-1);
 
-    const { data: keywords, isSuccess, isLoading, isFetching } = useKeywords(id);
+    const { data: keywords, isSuccess, isLoading, isFetching, refetch } = useKeywords(id);
     const { deleteKeyword, isLoading: isLoadingDeleteKeyword } = useDeleteKeyword(id);
-    
+
     const [data, setData] = useState();
     const { page, setPage, count, setCount, maxPages, setMaxPages } = usePagination();
+    const [file, setFile] = useState();
+
+    const onFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
+    const onFileUpload = async () => {
+        const formData = new FormData();
+
+        formData.append(
+            "file",
+            file
+        );
+
+        try {
+            await API.instance.post(`keywords/categories/${id}/bulk`, formData);
+            refetch();
+            showNotification("Failed to upload keywords");
+        }
+        catch (e) {
+            showNotification("Failed to upload keywords", ALERT_VARIANTS.DANGER);
+        }
+    };
 
     const toKeyword = (id = null) => {
         const link = generateLink(routes.KEYWORD_EDIT, { id });
@@ -115,6 +141,10 @@ const Keywords = () => {
                 <Col xs={4}>
                     <Button onClick={addKeyword}>Add <FaPlus style={{ marginBottom: "3px", marginLeft: "10px" }} /> </Button>
                 </Col>
+                <Col xs={8}>
+                    <input type="file" onChange={onFileChange} />
+                    <Button style={{ marginRight: "10px" }} onClick={onFileUpload}>Upload File</Button>
+                </Col>
             </Row>
             <TableContainer>
                 <Table columns={columns} loading={isLoading}>
@@ -124,11 +154,11 @@ const Keywords = () => {
                                 <tr key={i}>
                                     <td style={{ width: "40%" }}>{m.keyword}</td>
                                     <td>{m.nation}</td>
-                                    <td>{m.active}</td>
+                                    <td>{m.active ? "Yes" : "No"}</td>
                                     <td>{m.numberOfRep}</td>
-                                    <td>{m.organic}</td>
+                                    <td>{m.organic ? "Yes" : "No"}</td>
                                     <td>{m.numberOfAdsClicks}</td>
-                                    <td>{m.adsOnly}</td>
+                                    <td>{m.adsOnly ? "Yes" : "No"}</td>
                                     <td>
                                         <Button onClick={() => { toKeyword(m.id) }} style={{ marginRight: "10px" }}>Edit</Button>
                                         <Button loading={isLoadingDeleteKeyword} onClick={() => { onDeleteKeyword(m.id) }} variant="secondary">Delete</Button>

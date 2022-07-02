@@ -13,7 +13,8 @@ export const useKeywords = (id) => {
         isError,
         isSuccess,
         error,
-        isFetching
+        isFetching,
+        refetch
     } = useQuery(
         ["keywords", id],
         async () => {
@@ -34,6 +35,7 @@ export const useKeywords = (id) => {
         isError,
         isSuccess,
         error,
-        isFetching
+        isFetching,
+        refetch
     };
 };

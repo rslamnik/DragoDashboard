@@ -147,5 +147,38 @@ namespace DashboardApi.Controllers
         {
             return Ok(await _monitorService.UpdateKeyword(keyword, cancellationToken));
         }
+
+        [HttpPost("keywords/categories/{id}/bulk")]
+        public async Task<ActionResult<int>> BulkUploadKeywords(int id, CancellationToken cancellationToken = default)
+        {
+            var file = Request.Form.Files[0];
+            var keywords = new List<KeywordV2>();
+
+            using (var fileStream = file.OpenReadStream())
+            using (var reader = new StreamReader(fileStream))
+            {
+                string row;
+                while ((row = reader.ReadLine()) != null)
+                {
+                    var parts = row.Split(',');
+
+                    KeywordV2 key = new KeywordV2()
+                    {
+                        Active = true,
+                        AdsOnly = false,
+                        CategoryId = id,
+                        Keyword = parts[0],
+                        Nation = "US",
+                        NumberOfAdsClicks = 0,
+                        NumberOfRep = int.Parse(parts[1]),
+                        Organic = false
+                    };
+
+                    keywords.Add(key);
+                }
+            }
+
+            return Created("", await _monitorService.AddBulkKeywords(keywords, cancellationToken));
+        }
     }
 }
