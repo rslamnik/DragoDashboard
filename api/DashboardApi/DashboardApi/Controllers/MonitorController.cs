@@ -6,6 +6,7 @@ using Services.Models;
 
 namespace DashboardApi.Controllers
 {
+    [EnableCors(PolicyName = "_myAllowSpecificOrigins")]
     public class MonitorController : Controller
     {
         private readonly IMonitorService _monitorService;
